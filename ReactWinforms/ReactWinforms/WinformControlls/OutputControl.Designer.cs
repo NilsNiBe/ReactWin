@@ -44,9 +44,9 @@
       this.label1.AutoSize = true;
       this.label1.Location = new System.Drawing.Point(4, 4);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(39, 13);
+      this.label1.Size = new System.Drawing.Size(86, 13);
       this.label1.TabIndex = 1;
-      this.label1.Text = "Output";
+      this.label1.Text = "Winforms-Output";
       // 
       // OutputControl
       // 

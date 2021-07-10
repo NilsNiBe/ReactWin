@@ -76,8 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsBridges\BridgeMediator.cs" />
+    <Compile Include="JsBridges\PropertyBridge.cs" />
     <Compile Include="JsBridges\CallbackBridge.cs" />
-    <Compile Include="JsBridges\FileBridge.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
