@@ -28,8 +28,8 @@
     private void InitializeComponent()
     {
       this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-      this.outputControl1 = new ReactWinforms.WinformControlls.OutputControl();
       this.inputControl1 = new ReactWinforms.WinformControlls.InputControl();
+      this.outputControl1 = new ReactWinforms.WinformControlls.OutputControl();
       this.tableLayoutPanel.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -43,36 +43,36 @@
       this.tableLayoutPanel.Controls.Add(this.inputControl1, 0, 0);
       this.tableLayoutPanel.Controls.Add(this.outputControl1, 0, 1);
       this.tableLayoutPanel.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.tableLayoutPanel.Location = new System.Drawing.Point(12, 12);
+      this.tableLayoutPanel.Location = new System.Drawing.Point(2, 0);
       this.tableLayoutPanel.Name = "tableLayoutPanel";
       this.tableLayoutPanel.RowCount = 3;
       this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.7277F));
-      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
       this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.2723F));
-      this.tableLayoutPanel.Size = new System.Drawing.Size(1018, 837);
+      this.tableLayoutPanel.Size = new System.Drawing.Size(392, 505);
       this.tableLayoutPanel.TabIndex = 0;
-      // 
-      // outputControl1
-      // 
-      this.outputControl1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-      this.outputControl1.Location = new System.Drawing.Point(3, 113);
-      this.outputControl1.Name = "outputControl1";
-      this.outputControl1.Size = new System.Drawing.Size(386, 68);
-      this.outputControl1.TabIndex = 1;
       // 
       // inputControl1
       // 
       this.inputControl1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
       this.inputControl1.Location = new System.Drawing.Point(3, 3);
       this.inputControl1.Name = "inputControl1";
-      this.inputControl1.Size = new System.Drawing.Size(386, 68);
+      this.inputControl1.Size = new System.Drawing.Size(386, 60);
       this.inputControl1.TabIndex = 0;
+      // 
+      // outputControl1
+      // 
+      this.outputControl1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+      this.outputControl1.Location = new System.Drawing.Point(3, 71);
+      this.outputControl1.Name = "outputControl1";
+      this.outputControl1.Size = new System.Drawing.Size(386, 64);
+      this.outputControl1.TabIndex = 1;
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1032, 849);
+      this.ClientSize = new System.Drawing.Size(393, 506);
       this.Controls.Add(this.tableLayoutPanel);
       this.Name = "MainForm";
       this.Text = "ReactWin";

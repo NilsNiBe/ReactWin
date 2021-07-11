@@ -35,7 +35,7 @@
       // 
       this.inputTextBox.Location = new System.Drawing.Point(3, 26);
       this.inputTextBox.Name = "inputTextBox";
-      this.inputTextBox.Size = new System.Drawing.Size(305, 20);
+      this.inputTextBox.Size = new System.Drawing.Size(335, 20);
       this.inputTextBox.TabIndex = 0;
       this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
       // 
@@ -56,7 +56,7 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.inputTextBox);
       this.Name = "InputControl";
-      this.Size = new System.Drawing.Size(311, 110);
+      this.Size = new System.Drawing.Size(341, 110);
       this.ResumeLayout(false);
       this.PerformLayout();
 

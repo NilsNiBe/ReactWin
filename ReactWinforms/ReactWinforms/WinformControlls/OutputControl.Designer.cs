@@ -35,7 +35,7 @@
       // 
       this.outputTextBox.Location = new System.Drawing.Point(3, 21);
       this.outputTextBox.Name = "outputTextBox";
-      this.outputTextBox.Size = new System.Drawing.Size(292, 20);
+      this.outputTextBox.Size = new System.Drawing.Size(336, 20);
       this.outputTextBox.TabIndex = 0;
       this.outputTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
       // 
@@ -56,7 +56,7 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.outputTextBox);
       this.Name = "OutputControl";
-      this.Size = new System.Drawing.Size(298, 110);
+      this.Size = new System.Drawing.Size(342, 110);
       this.ResumeLayout(false);
       this.PerformLayout();
 

@@ -11,13 +11,13 @@ export interface Bridges {
 
 const App = () => {
  const [bridges, setBridges] = React.useState<Bridges>();
- const input = React.useRef<HTMLInputElement>(null);
+ const [text, setText] = React.useState("");
 
   React.useEffect(() => {
     async function loadBridges() {
       const propertyBridge = await bridgeManager.getBridge<PropertyBridge>("propertyBridge")
       const callbackBridge = await bridgeManager.getBridge<CallbackBridge>("callbackBridge")
-      propertyBridge.addEventListener("textChanged", (arg:any) => {if (input.current !== null) input.current.value = arg.text} )      
+      propertyBridge.addEventListener("textChanged", (arg:any) => setText(arg.text) )      
       setBridges({callbackBridge, propertyBridge})      
     }
     if ((window as any).bridgeMediator !== undefined) {
@@ -25,21 +25,27 @@ const App = () => {
     }
   }, []);
 
-function inputChanged(text: string) {
-  if (bridges === undefined) return;
-  bridges.callbackBridge.setText(text);
-}
+  function onOutputClicked(){
+    if (bridges === undefined) return;
+    bridges.callbackBridge.setText(text);
+  }
+
+  async function onCallServerClicked(){   
+    var res = await window.fetch('api/time')
+    const text = await res.json()
+    const date = new Date(Date.parse(text))
+    setText(date.toLocaleTimeString())
+  }
+
   return (    
       <div className="App">
         <header className="App-header">          
           <img src={logo} className="App-logo" alt="logo" />
-          {bridges !== undefined && (<>           
-          <input ref={input} onChange={e => inputChanged(e.target.value)}/>
-          </>)}          
+          <button onClick={onCallServerClicked}>Call server</button>      
+          <input value={text}/>
+          <button onClick={onOutputClicked}>To output</button>              
         </header>
       </div>)
-    
-
 }
 
 export default App;
