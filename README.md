@@ -5,7 +5,7 @@ React in Winforms (PoC)
 
 create-react-app with JS-Bridge
 
-PropertyBridge and CallbackBrdige
+PropertyBridge and CallbackBridge
 
 inspired by https://github.com/johot/react-windows-desktop
 
