@@ -1,4 +1,4 @@
-import { Bridge } from "./bridgeManager";
+import { Bridge } from "./bridge";
 
 export interface CallbackBridge extends Bridge {
   setText(text: string): void;

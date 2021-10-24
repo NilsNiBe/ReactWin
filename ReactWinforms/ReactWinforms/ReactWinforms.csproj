@@ -88,8 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selfhosting\Controller\TimeController.cs" />
     <Compile Include="Selfhosting\SelfhostingServer.cs" />
-    <Compile Include="Selfhosting\SynchronizationContextAwaiter.cs" />
-    <Compile Include="Selfhosting\ThreadService.cs" />
+    <Compile Include="Services\Threading\SynchronizationContextAwaiter.cs" />
+    <Compile Include="Services\Threading\ThreadService.cs" />
+    <Compile Include="Services\StringService.cs" />
     <Compile Include="WinformControlls\InputControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

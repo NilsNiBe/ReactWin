@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace ReactWinforms.Selfhosting.Controller
+namespace ReactWinforms
 {
   [RoutePrefix("api/time")]
   public class TimeController : ApiController

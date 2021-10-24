@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ReactWinforms.WinformControlls
+namespace ReactWinforms
 {
   public partial class OutputControl : UserControl
   {

@@ -5,7 +5,7 @@ using CefSharp;
 using CefSharp.WinForms;
 using ReactWinforms.JsBridges;
 
-namespace ReactWinforms.WinformControlls
+namespace ReactWinforms
 {
   public partial class ReactHost : UserControl
   {
@@ -23,7 +23,7 @@ namespace ReactWinforms.WinformControlls
         Dock = DockStyle.Fill
       };
 
- 
+
 
       m_Browser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
       m_Browser.JavascriptObjectRepository.Register("bridgeMediator", new BridgeMediator(m_Browser, bridges), true, BindingOptions.DefaultBinder);

@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
-using ReactWinforms.Selfhosting;
 
-namespace ReactWinforms.JsBridges
+namespace ReactWinforms
 {
   public class CallbackBridge
   {

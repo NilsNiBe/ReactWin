@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ReactWinforms.WinformControlls
+namespace ReactWinforms
 {
   public partial class InputControl : UserControl
   {

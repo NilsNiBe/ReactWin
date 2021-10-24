@@ -11,16 +11,16 @@ namespace ReactWinforms.JsBridges
 {
   public class BridgeMediator
   {
-    private Dictionary<string, object> _bridges = new Dictionary<string, object>();
-    private ChromiumWebBrowser _browser;
+    private readonly Dictionary<string, object> m_Bridges = new Dictionary<string, object>();
+    private readonly ChromiumWebBrowser m_Browser;
 
     public BridgeMediator(ChromiumWebBrowser browser, IEnumerable<object> bridges)
     {
-      _browser = browser;
+      m_Browser = browser;
 
       foreach (var bridge in bridges) {
-        string bridgeName = ConvertToCamelCase(bridge.GetType().Name);
-        _bridges.Add(bridgeName, bridge);
+        string bridgeName = StringService.ConvertToCamelCase(bridge.GetType().Name);
+        m_Bridges.Add(bridgeName, bridge);
         HookUpEventListeners(bridgeName, bridge);
       }
     }
@@ -31,14 +31,16 @@ namespace ReactWinforms.JsBridges
 
       foreach (var eventInfo in eventInfos) {
         if (eventInfo.EventHandlerType == typeof(Action)) {
-          eventInfo.AddEventHandler(instance, new Action(() => HandleEvent(bridgeName, eventInfo.Name, null)));
+          eventInfo.AddEventHandler(
+            instance, new Action(() => HandleEvent(bridgeName, eventInfo.Name, null)));
         } else {
-          eventInfo.AddEventHandler(instance, new Action<object>(arg => HandleEvent(bridgeName, eventInfo.Name, arg)));
+          eventInfo.AddEventHandler(instance
+            , new Action<object>(arg => HandleEvent(bridgeName, eventInfo.Name, arg)));
         }
       }
     }
 
-    public void HandleEvent(string bridgeName, string eventName, object args)
+    private void HandleEvent(string bridgeName, string eventName, object args)
     {
       var argsJson = JsonConvert.SerializeObject(args, new JsonSerializerSettings {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
@@ -46,15 +48,20 @@ namespace ReactWinforms.JsBridges
 
       argsJson = HttpUtility.JavaScriptStringEncode(argsJson);
 
-      _browser.ExecuteScriptAsync("window.bridgeManager.getBridge('" + bridgeName + "').then(bridge => bridge.triggerEvent('" + ConvertToCamelCase(eventName) + "', JSON.parse('" + argsJson + "')))");
+      m_Browser.ExecuteScriptAsync($"window.bridgeManager.getBridge('{bridgeName}').then(" +
+        "bridge => bridge.triggerEvent(" +
+        "'{StringService.ConvertToCamelCase(eventName)}', JSON.parse('{argsJson}')))");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public string CallMethod(string bridgeName, string methodName, string arguments)
     {
       var realArguments = JsonConvert.DeserializeObject<object[]>(arguments);
 
-      var bridgeObject = _bridges[bridgeName];
-      var mi = bridgeObject.GetType().GetMethod(ConvertToTitleCase(methodName));
+      var bridgeObject = m_Bridges[bridgeName];
+      var mi = bridgeObject.GetType().GetMethod(StringService.ConvertToTitleCase(methodName));
       object result = mi.Invoke(bridgeObject, realArguments);
 
       return JsonConvert.SerializeObject(result, new JsonSerializerSettings {
@@ -62,26 +69,20 @@ namespace ReactWinforms.JsBridges
       });
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public string GetBridgeMethods(string bridgeName)
     {
-      var bridgeObject = _bridges[bridgeName];
+      var bridgeObject = m_Bridges[bridgeName];
 
       // Return method names
-      var methods = bridgeObject.GetType().GetMethods().Select(mi => mi.Name).Select(methodName => ConvertToCamelCase(methodName)).ToList();
+      var methods = bridgeObject.GetType().GetMethods().Select(mi => mi.Name)
+        .Select(methodName => StringService.ConvertToCamelCase(methodName)).ToList();
 
       return JsonConvert.SerializeObject(methods, new JsonSerializerSettings {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
       });
-    }
-
-    private string ConvertToTitleCase(string name)
-    {
-      return Char.ToUpperInvariant(name[0]) + name.Substring(1);
-    }
-
-    private string ConvertToCamelCase(string name)
-    {
-      return Char.ToLowerInvariant(name[0]) + name.Substring(1);
     }
   }
 }

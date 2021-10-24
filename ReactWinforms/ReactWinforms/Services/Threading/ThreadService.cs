@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace ReactWinforms.Selfhosting
+namespace ReactWinforms
 {
   public class ThreadService
   {

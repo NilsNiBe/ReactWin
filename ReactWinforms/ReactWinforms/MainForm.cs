@@ -1,7 +1,4 @@
 ﻿using System.Windows.Forms;
-using ReactWinforms.JsBridges;
-using ReactWinforms.Selfhosting;
-using ReactWinforms.WinformControlls;
 
 namespace ReactWinforms
 {

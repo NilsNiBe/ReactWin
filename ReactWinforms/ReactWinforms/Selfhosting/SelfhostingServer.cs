@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Web.Http.SelfHost;
 using Newtonsoft.Json.Serialization;
 
-namespace ReactWinforms.Selfhosting
+namespace ReactWinforms
 {
   public class SelfhostingServer
   {

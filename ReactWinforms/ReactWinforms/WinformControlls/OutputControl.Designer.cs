@@ -1,4 +1,4 @@
-﻿namespace ReactWinforms.WinformControlls
+﻿namespace ReactWinforms
 {
   partial class OutputControl
   {

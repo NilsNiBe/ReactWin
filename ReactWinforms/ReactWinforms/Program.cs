@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
-using ReactWinforms.Selfhosting;
 
 namespace ReactWinforms
 {
@@ -15,7 +14,7 @@ namespace ReactWinforms
     [STAThread]
     static void Main()
     {
-      
+
       SelfhostingServer.Run();
 
       var settings = new CefSettings() {

@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace ReactWinforms.Selfhosting
+namespace ReactWinforms
 {
   public struct SynchronizationContextAwaiter : INotifyCompletion
   {

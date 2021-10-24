@@ -1,3 +1,5 @@
+import { Bridge } from "./bridge";
+
 interface BridgeMediator {
   callMethod(bridgeName: string, methodName: string, args: string): string;
   getBridgeMethods(bridgeName: string): string;
@@ -12,13 +14,11 @@ class BridgeManager {
   }
 
   async getBridge<T>(bridgeName: string): Promise<T> {
-    // Do we have an existing?
-    debugger;
+    // Do we have an existing?   
     if (BridgeManager.bridgeInstances[bridgeName] !== undefined) {
       return BridgeManager.bridgeInstances[bridgeName];
     } else {
-      const bridgeMediator: BridgeMediator = (window as any).bridgeMediator;
-      console.log(bridgeMediator)
+      const bridgeMediator: BridgeMediator = (window as any).bridgeMediator;      
 
       // Generate a bridge class dynamically
       const methodNames = JSON.parse(await bridgeMediator.getBridgeMethods(bridgeName)) as string[];
@@ -29,10 +29,10 @@ class BridgeManager {
       methodNames.forEach(methodName => {
         // We create a function with the proper name
         bridgeInstance[methodName] = async (...args:any) => {
-          let fnResult: string = await bridgeMediator.callMethod(bridgeName, methodName, JSON.stringify(args));
+          const fnResult: string = await bridgeMediator.callMethod(bridgeName, methodName, JSON.stringify(args));
 
           // Lets deserialize
-          let deserializedReturnValue = JSON.parse(fnResult);
+          const deserializedReturnValue = JSON.parse(fnResult);
           return deserializedReturnValue;
         };
       });
@@ -40,34 +40,6 @@ class BridgeManager {
       BridgeManager.bridgeInstances[bridgeName] = bridgeInstance;
 
       return bridgeInstance as T;
-    }
-  }
-}
-
-export class Bridge {
-  private triggerEvent(eventName: string, args: any) {
-    let listeners = this.getEventListeners(eventName);
-
-    listeners.forEach(listener => {
-      listener(args);
-    });
-  }
-
-  private _eventListeners = {} as any;
-
-  getEventListeners(eventName: string): any[] {
-    if (this._eventListeners[eventName] === undefined) {
-      return [];
-    } else {
-      return this._eventListeners[eventName];
-    }
-  }
-
-  addEventListener(eventName: string, delegate: any) {
-    if (this._eventListeners[eventName] === undefined) {
-      this._eventListeners[eventName] = [delegate];
-    } else {
-      this._eventListeners[eventName].push(delegate);
     }
   }
 }

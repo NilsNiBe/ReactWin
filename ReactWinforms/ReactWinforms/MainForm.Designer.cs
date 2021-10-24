@@ -28,8 +28,8 @@
     private void InitializeComponent()
     {
       this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-      this.inputControl1 = new ReactWinforms.WinformControlls.InputControl();
-      this.outputControl1 = new ReactWinforms.WinformControlls.OutputControl();
+      this.inputControl1 = new ReactWinforms.InputControl();
+      this.outputControl1 = new ReactWinforms.OutputControl();
       this.tableLayoutPanel.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -83,8 +83,8 @@
 
     #endregion
 
-    private WinformControlls.InputControl inputControl1;
-    private WinformControlls.OutputControl outputControl1;
+    private InputControl inputControl1;
+    private OutputControl outputControl1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
   }
 }
